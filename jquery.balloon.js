@@ -105,11 +105,13 @@
 			initTipStyle = {position: "absolute", height: "0", width: "0", border: "solid 0 transparent"},
 			target = new NumericalBoxElement($target),
 			balloon = new NumericalBoxElement($balloon);
-		balloon.setTop(-options.offsetY
+		balloon.setTop(options.targetY !== undefined ? options.targetY - balloon.height / 2
+			: -options.offsetY
 			+ ((options.position && options.position.indexOf("top") >= 0) ? target.top - balloon.height
 			: ((options.position && options.position.indexOf("bottom") >= 0) ? target.bottom
 			: target.center.top - balloon.height / 2)));
-		balloon.setLeft(options.offsetX
+		balloon.setLeft(options.targetX !== undefined ? options.targetX - balloon.width / 2
+			: options.offsetX
 			+ ((options.position && options.position.indexOf("left") >= 0) ? target.left - balloon.width
 			: ((options.position && options.position.indexOf("right") >= 0) ? target.right
 			: target.center.left - balloon.width / 2)));
