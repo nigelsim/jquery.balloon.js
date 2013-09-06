@@ -167,6 +167,7 @@
 	// Public
 	//-----------------------------------------------------------------------------
 	$.fn.balloon = function(options) {
+		this.data("original_options", options);
 		options = $.extend(true, {}, $.balloon.defaults, options);
 		return this.one("mouseenter", function(e) {
 			var $target = $(this), t = this;
@@ -190,7 +191,7 @@
 		var $target, $balloon, offTimer;
 		if(!$.balloon.defaults.css) $.balloon.defaults.css = {};
 		if(options || !this.data("options"))
-			this.data("options", $.extend(true, {}, $.balloon.defaults, options || {}));
+			this.data("options", $.extend(true, this.data("original_options"), options || {}));
 		options = this.data("options");
 		return this.each(function() {
 			$target = $(this);
